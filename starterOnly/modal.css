@@ -14,11 +14,12 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /*background-image: url("bg_img.jpg");*/
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
+  position: relative;
 }
 
 p {
@@ -68,39 +69,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -111,8 +79,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -270,7 +236,10 @@ input[data-error]::after {
   opacity: 0;
 }
 .checkbox-input {
-  display: none;
+  /*display: none;*/
+  opacity: 0;
+  position : absolute;
+  transform: translate(75%, 60%);
 }
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
@@ -405,7 +374,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /*min-height: 93vh;*/
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -441,10 +410,9 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
   font-weight: normal;
   margin-top: 57px;
-  padding: 0;
+  padding: 0px;
 }
 .btn-signup {
   outline: none;
@@ -462,6 +430,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -473,12 +442,85 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+/*Thanks "Merci ! Votre réservation a été reçue." */
+.thanks-container{
+  visibility: hidden;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  pointer-events: none;
+}
+.thanks p{
+  background-color: rgba(013, 130, 230, 1);
+  flex: 1;
+  font-size:x-large;
+  color:white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 10px;
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+/* Style modal form */
+.Error{
+  color: red;
+  font-size: 0.8em;;
+}
+.hide{
+  display: none;
+}
+
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Menu _ Display */
+@media screen and (max-width: 1200px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 990px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -495,7 +537,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
@@ -517,13 +559,51 @@ footer {
   }
 }
 
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
+@media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
   }
-  to {
-    opacity: 1;
+  .topnav{
+    margin: 20px;
+    display: flex;
+    flex:1;
+    justify-content: space-between;
   }
-}
-
+  .header-logo img{
+    margin: 20px;
+    width: 60%;
+    /*width: 160px;*/
+    display: flex;
+  }
+  .hero-content{
+    min-width: unset;
+  }
+  .hero-headline {
+    font-size: 2.5rem;
+    font-weight: normal;
+    white-space: wrap;
+  }
+  .hero-text{
+    margin-top : 20px;
+  }
+  .hero-img img{
+    margin-top : 10px;
+  }
+  .hero-section{
+    margin-bottom: 0px;
+  }
+  footer{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+  .copyrights{
+    margin: 0;
+    padding-bottom : 20px;
+  }
+  
+} 
