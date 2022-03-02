@@ -482,12 +482,18 @@ footer {
   font-size: 0.6em;;
 }
 .hide{
-  visibility: hidden;
+  /*visibility: hidden;*/
+  display: none;
 }
 .msgThanks{
   /*display: flex;
   flex-direction: column;*/
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
 }
 
 
