@@ -459,9 +459,10 @@ footer {
   display: none;
 }
 .msgThanks{
-  height: 100vh;
+  height: 60vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
