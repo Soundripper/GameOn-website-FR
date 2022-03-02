@@ -157,7 +157,6 @@ function validate(){
   locationErrorDiv = document.getElementById('locationError');
   var locationChecked = document.querySelectorAll('input[name="location"]:checked');
   console.log("Location Checked : " + locationChecked.length);
-  //var locationList = document.getElementsByName('location');
   if(locationChecked.length > 0){
     var locationOk = true;
   }else{
@@ -183,7 +182,6 @@ function validate(){
   locationErrorDiv = document.getElementById('locationError');
   var locationChecked = document.querySelectorAll('input[name="location"]:checked');
   console.log("Location Checked : " + locationChecked.length);
-  //var locationList = document.getElementsByName('location');
   if(locationChecked.length > 0){
     var locationOk = true;
   }else{
