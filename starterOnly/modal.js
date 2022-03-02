@@ -222,7 +222,7 @@ function validate(){
     //myForm.style.visibility = "hidden";
     //myForm.innerHTML = "Merci pour votre inscription"
     msgDiv.classList.add("msgThanks");
-    msgDiv.innerHTML = '<p> "Merci pour votre inscription !" </p>';
+    msgDiv.innerHTML = '<p>Merci pour votre inscription !</p>';
     modalB.append(msgDiv);
     myForm.classList.add("hide");
     console.log("Submit");

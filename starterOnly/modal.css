@@ -443,33 +443,6 @@ input[data-error]::after {
   display: none;
 }
 
-/*Thanks "Merci ! Votre réservation a été reçue." */
-.thanks-container{
-  visibility: hidden;
-  display: flex;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
-  flex-wrap: wrap;
-  border-radius: 20px;
-  pointer-events: none;
-}
-.thanks p{
-  background-color: rgba(013, 130, 230, 1);
-  flex: 1;
-  font-size:x-large;
-  color:white;
-  padding: 30px;
-  text-align: center;
-  border-radius: 10px;
-  margin: 10px;
-}
-
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -486,15 +459,12 @@ footer {
   display: none;
 }
 .msgThanks{
-  /*display: flex;
-  flex-direction: column;*/
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
+
 
 
 @keyframes modalopen {
