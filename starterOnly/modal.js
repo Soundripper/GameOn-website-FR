@@ -48,8 +48,9 @@ function closeModal(){
 
 // FONCTION DE VALIDATION DU FORM
 //document.querySelector('[name="first"]').setCustomValidity('Veuillez entrer 2 caractères ou plus pour le champ du nom.');
-function validate(){
-
+function validate(e){
+  //e.preventDefault();
+  console.log(e);
   // verify first
   var firstValue = document.querySelector('[name="first"]').value;
   var firstRegex = /^\S{2,50}$/.test(firstValue);
@@ -193,7 +194,7 @@ function validate(){
   if(conditionsOk == false){
     if(!conditionsErrorDiv){
       msgDiv.innerHTML = '<p>Vous devez vérifier que vous acceptez les termes et conditions.</p>';
-      conditionsParent.appendChild(msgDiv);
+      conditionsParent.after(msgDiv);
     }     
   }
   else{
@@ -225,7 +226,7 @@ function validate(){
     //myForm.innerHTML = "Merci pour votre inscription"
     msgDiv.classList.add("msgThanks");
     msgDiv.innerHTML = '<p> "Merci pour votre inscription !" </p>';
-    modalB.after(msgDiv);
+    modalB.appendChild(msgDiv);
     console.log("Submit");
     for (i = 0; i < myFormContent.length; i++) {
       myFormContent[i].classList.add("hide");
@@ -233,7 +234,7 @@ function validate(){
     setTimeout(function() {
       myForm.submit();
       //closeModal();
-    }, 3000);
+    }, 10000);
   }
 
 }
