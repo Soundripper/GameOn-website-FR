@@ -479,10 +479,15 @@ footer {
 /* Style modal form */
 .Error{
   color: red;
-  font-size: 0.8em;;
+  font-size: 0.6em;;
 }
 .hide{
-  display: none;
+  visibility: hidden;
+}
+.msgThanks{
+  /*display: flex;
+  flex-direction: column;*/
+  margin: auto;
 }
 
 

@@ -25,8 +25,10 @@ const quantity = document.getElementById("quantity");
 const quantityParent = quantity.parentNode;
 const locationDiv = document.getElementsByName("location")[0];
 const locationParent = locationDiv.parentNode;
-/*const conditionsDiv = document.getElementsByName("conditions")[0];
-const conditionsParent = conditionsDiv.parentNode;*/
+const conditions = document.getElementById("checkbox1");
+const conditionsParent = conditions.parentNode;
+/*const events = document.getElementsById("checkbox2");
+const eventsParent = events.parentNode;*/
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -45,6 +47,7 @@ function closeModal(){
 }
 
 // FONCTION DE VALIDATION DU FORM
+//document.querySelector('[name="first"]').setCustomValidity('Veuillez entrer 2 caractères ou plus pour le champ du nom.');
 function validate(){
 
   // verify first
@@ -56,7 +59,7 @@ function validate(){
   firstErrorDiv = document.getElementById('firstError');
   if(firstRegex == false){
     if(!firstErrorDiv){
-      msgDiv.innerHTML = '<p> "Erroooooor first" </p>';
+      msgDiv.innerHTML = '<p>Veuillez entrer 2 caractères ou plus pour le champ du prénom.</p>';
       firstParent.appendChild(msgDiv);
     }     
   }else{
@@ -74,7 +77,7 @@ function validate(){
   lastErrorDiv = document.getElementById('lastError');
   if(secondRegex == false){
     if(!lastErrorDiv){
-      msgDiv.innerHTML = '<p> "Erroooooor last" </p>';
+      msgDiv.innerHTML = '<p>Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>';
       lastParent.appendChild(msgDiv);
     }     
   }
@@ -93,7 +96,7 @@ function validate(){
   emailErrorDiv = document.getElementById('emailError');
   if(emailRegex == false){
     if(!emailErrorDiv){
-      msgDiv.innerHTML = '<p> "Erroooooor email" </p>';
+      msgDiv.innerHTML = '<p>Veuillez saisir une adresse valide.</p>';
       emailParent.appendChild(msgDiv);
     }     
   }
@@ -118,7 +121,7 @@ function validate(){
   if(birthRegex == false || age < 9){
     console.log("birthRegex : " + birthRegex);
     if(!birthErrorDiv){
-      msgDiv.innerHTML = '<p> "Erroooooor date" </p>';
+      msgDiv.innerHTML = '<p>Vous devez entrer votre date de naissance et avoir plus de 9 ans.</p>';
       birthParent.appendChild(msgDiv);
     }     
   }
@@ -139,7 +142,7 @@ function validate(){
   quantityErrorDiv = document.getElementById('quantityError');
   if(quantityRegex == false){
     if(!quantityErrorDiv){
-      msgDiv.innerHTML = '<p> "Erroooooor quantity" </p>';
+      msgDiv.innerHTML = '<p>Saisissez une valeur numérique entre 0 et 99.</p>';
       quantityParent.appendChild(msgDiv);
     }     
   }
@@ -164,7 +167,7 @@ function validate(){
   }
   if(locationOk == false){
     if(!locationErrorDiv){
-      msgDiv.innerHTML = '<p> "Erroooooor location" </p>';
+      msgDiv.innerHTML = '<p>Vous devez choisir une option.</p>';
       locationParent.appendChild(msgDiv);
     }     
   }
@@ -175,27 +178,27 @@ function validate(){
   }
 
   // verify conditions
-  var locationOk = false;
+  var conditionsOk = false;
   var msgDiv = document.createElement("div");
   msgDiv.classList.add("Error");
-  msgDiv.id = "locationError";
-  locationErrorDiv = document.getElementById('locationError');
-  var locationChecked = document.querySelectorAll('input[name="location"]:checked');
-  console.log("Location Checked : " + locationChecked.length);
-  if(locationChecked.length > 0){
-    var locationOk = true;
+  msgDiv.id = "conditionsError";
+  conditionsErrorDiv = document.getElementById('conditionsError');
+  var conditionsChecked = document.querySelectorAll('input[name="checkbox1"]:checked');
+  console.log("Conditions Checked : " + conditionsChecked.length);
+  if(conditionsChecked.length > 0){
+    var conditionsOk = true;
   }else{
-    var locationOk = false;
+    var conditionsOk = false;
   }
-  if(locationOk == false){
-    if(!locationErrorDiv){
-      msgDiv.innerHTML = '<p> "Erroooooor location" </p>';
-      locationParent.appendChild(msgDiv);
+  if(conditionsOk == false){
+    if(!conditionsErrorDiv){
+      msgDiv.innerHTML = '<p>Vous devez vérifier que vous acceptez les termes et conditions.</p>';
+      conditionsParent.appendChild(msgDiv);
     }     
   }
   else{
-    if(locationErrorDiv){
-      locationParent.removeChild(locationErrorDiv);
+    if(conditionsErrorDiv){
+      conditionsParent.removeChild(conditionsErrorDiv);
     }
   }
 
@@ -212,19 +215,22 @@ function validate(){
   
   // Modal message on submit
   function messageSubmit(){
+    
     var myForm = document.getElementsByName("reserve")[0];
     var modalB = document.getElementsByClassName("modal-body")[0];
     var myFormContent = myForm.children;
     var msgDiv = document.createElement("div");
-    msgDiv.classList.add("Error");
-    msgDiv.innerHTML = '<p> "Submitting form ! Wait 3 seconds" </p>';
-    modalB.appendChild(msgDiv);
+    //myForm.classList.add("hide");
+    //myForm.style.visibility = "hidden";
+    //myForm.innerHTML = "Merci pour votre inscription"
+    msgDiv.classList.add("msgThanks");
+    msgDiv.innerHTML = '<p> "Merci pour votre inscription !" </p>';
+    modalB.after(msgDiv);
     console.log("Submit");
     for (i = 0; i < myFormContent.length; i++) {
       myFormContent[i].classList.add("hide");
     }
     setTimeout(function() {
-      //document.getElementById('thanks').style.visibility = 'hidden';
       myForm.submit();
       //closeModal();
     }, 3000);
