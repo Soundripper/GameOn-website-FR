@@ -47,7 +47,11 @@ function closeModal(){
   modalbg.style.display = "none";
 }
 
-submitBtn.addEventListener('click', validate);
+submitBtn.addEventListener('click', function(e){
+  e.preventDefault();
+  console.log(e);
+  validate();
+});
 
 // FONCTION DE VALIDATION DU FORM
 //document.querySelector('[name="first"]').setCustomValidity('Veuillez entrer 2 caractères ou plus pour le champ du nom.');
@@ -214,29 +218,29 @@ function validate(){
     messageSubmit();
     return false;
   };
-  
-  // Modal message on submit
-  function messageSubmit(){
-    var myForm = document.getElementsByName("reserve")[0];
-    myForm.submit();
-    modalAfterSubmit();
-    console.log("Submit");
-  }
+}
 
-  function modalAfterSubmit(){
-    launchModal();
-    var myForm = document.getElementsByName("reserve")[0];
-    var modalB = document.getElementsByClassName("modal-body")[0];
-    var msgDiv = document.createElement("div");
-    msgDiv.classList.add("msgThanks");
-    msgDiv.innerHTML = '<p>Merci pour votre inscription !</p>';
-    modalB.append(msgDiv);
-    myForm.classList.add("hide");
-    console.log("Submit");
-  }
-
+var myForm = document.getElementsByName("reserve")[0];
+// Modal message on submit
+function messageSubmit(){
+  ////////////////////// Uncomment to fire submit
+  //myForm.submit();
+  modalAfterSubmit();
+  console.log("Submit");
 }
 
 
+myForm.addEventListener('submit', function(e){
+  // on form submission, prevent default
+  e.preventDefault();
+});
 
-
+function modalAfterSubmit(){
+  var modalB = document.getElementsByClassName("modal-body")[0];
+  var msgDiv = document.createElement("div");
+  msgDiv.classList.add("msgThanks");
+  msgDiv.innerHTML = '<p>Merci pour votre inscription !</p>';
+  modalB.append(msgDiv);
+  myForm.classList.add("hide");
+  console.log("Submit");
+}
