@@ -12,7 +12,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
-const submitBtn = document.querySelector(".btn-submit");
 // Form Elements
 const myForm = document.getElementsByName("reserve")[0];
 
@@ -38,27 +37,19 @@ function closeModal(){
   }
 }
 
-//Form validators
+//Bool form Submitted -- pour gérer le reset du form et du message
 let formSubmitted = false;
 
 // FONCTION DE VALIDATION DU FORM
 myForm.addEventListener('submit', function(e){
-  // on form submission, prevent default
   e.preventDefault();
   validate();
 });
 
 function validate(){
-  isFirstNameValid();
-  isLastNameValid();
-  isMailValid();
-  isBirthdateValid();
-  isQuantityValid();
-  isLocationValid();
-  isConditionsValid();
+  isFirstNameValid(),isLastNameValid(),isMailValid(),isBirthdateValid(),isQuantityValid(),isLocationValid(),isConditionsValid();
   if (FirstNameValid && LastNameValid && MailValid && BirthdateValid && QuantityValid && LocationValid && ConditionsValid){
     messageSubmit();
-    return false;
   }
 }
 
