@@ -70,8 +70,9 @@
                   type="text"
                   id="first"
                   name="first"
-                  
-                /><br>
+                />
+                <p class="Error">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</p>
+                
               </div>
               <div
                 class="formData">
@@ -81,7 +82,8 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
+                <p class="Error">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>
               </div>
               <div
                 class="formData">
@@ -91,7 +93,8 @@
                   type="text"
                   id="email"
                   name="email"
-                /><br>
+                />
+                <p class="Error">Veuillez saisir une adresse valide.</p>
               </div>
               <div
                 class="formData">
@@ -101,16 +104,18 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                />
+                <p class="Error">Vous devez entrer votre date de naissance et avoir plus de 9 ans.</p>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <p class="Error">Saisissez une valeur numérique entre 0 et 99.</p>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" id="locationCheckboxes">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -178,9 +183,11 @@
                   Portland</label
                 >
               </div>
+              <p class="Error">Vous devez choisir une option.</p>
 
               <div
                 class="formData">
+
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -188,18 +195,23 @@
                   name="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" id="conditions" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2"/>
+                <p class="Error">Vous devez vérifier que vous acceptez les termes et conditions.</p>
+                
+                <input class="checkbox-input"
+                type="checkbox"
+                id="checkbox2"
+                name="checkbox2"/>
                 <label for="checkbox2" class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
+
               <input
                 class="btn-submit"
                 type="submit"
@@ -217,5 +229,6 @@
       </p>
     </footer>
     <script src="modal.js"></script>
+    <script src="formValidation.js"></script>
   </body>
 </html>

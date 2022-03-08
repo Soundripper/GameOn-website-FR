@@ -452,7 +452,8 @@ footer {
 /* Style modal form */
 .Error{
   color: red;
-  font-size: 0.6em;;
+  font-size: 0.6em;
+  display: none;
 }
 .hide{
   /*visibility: hidden;*/
