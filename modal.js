@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
+const submitBtn = document.querySelector(".btn-submit");
 // Form Elements
 const first = document.getElementById("first");
 const firstParent = first.parentNode;
@@ -45,6 +46,8 @@ closeBtn.addEventListener('click', closeModal);
 function closeModal(){
   modalbg.style.display = "none";
 }
+
+submitBtn.addEventListener('click', validate);
 
 // FONCTION DE VALIDATION DU FORM
 //document.querySelector('[name="first"]').setCustomValidity('Veuillez entrer 2 caractères ou plus pour le champ du nom.');
@@ -117,7 +120,7 @@ function validate(){
   msgDiv.classList.add("Error");
   msgDiv.id = "birthError";
   birthErrorDiv = document.getElementById('birthError');
-  if(birthRegex == false || age < 9){
+  if(birthRegex == false || age < 0){
     console.log("birthRegex : " + birthRegex);
     if(!birthErrorDiv){
       msgDiv.innerHTML = '<p>Vous devez entrer votre date de naissance et avoir plus de 9 ans.</p>';
@@ -215,24 +218,21 @@ function validate(){
   // Modal message on submit
   function messageSubmit(){
     var myForm = document.getElementsByName("reserve")[0];
+    myForm.submit();
+    modalAfterSubmit();
+    console.log("Submit");
+  }
+
+  function modalAfterSubmit(){
+    launchModal();
+    var myForm = document.getElementsByName("reserve")[0];
     var modalB = document.getElementsByClassName("modal-body")[0];
-    var myFormContent = myForm.children;
     var msgDiv = document.createElement("div");
-    //myForm.classList.add("hide");
-    //myForm.style.visibility = "hidden";
-    //myForm.innerHTML = "Merci pour votre inscription"
     msgDiv.classList.add("msgThanks");
     msgDiv.innerHTML = '<p>Merci pour votre inscription !</p>';
     modalB.append(msgDiv);
     myForm.classList.add("hide");
     console.log("Submit");
-    /*for (i = 0; i < myFormContent.length; i++) {
-      myFormContent[i].classList.add("hide");
-    }*/
-    setTimeout(function() {
-      myForm.submit();
-      //closeModal();
-    }, 2000);
   }
 
 }
