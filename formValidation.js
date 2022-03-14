@@ -2,7 +2,8 @@ const arrayGen = () => {
     const inputsNames = [];
     const formElements = myForm.getElementsByTagName('input');
     for (i=0; i<formElements.length; i++){
-        inputsNames.push(formElements[i].name);
+        inputsNames.indexOf(formElements[i].name) === -1 ? inputsNames.push(formElements[i].name) : console.log("This item already exists");
+        //inputsNames.push(formElements[i].name);
         console.log(inputsNames);
     }
 }
@@ -26,8 +27,10 @@ const isFirstNameValid = () => {
 }
 
 const isLastNameValid = () => {
+    //regexValidate(document.querySelector('[name="last"]').value,
     regexValidate(last.value,
     /^\S[a-z]{2,50}$/,
+    //document.getElementById("last"));
     document.getElementById(last.name));
     lastNameValid = regexResult;
 }
