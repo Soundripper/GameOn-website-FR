@@ -1,16 +1,9 @@
-
 const arrayGen = () => {
-    const inputsTypes = [];
     const inputsNames = [];
-    const inputsValues = [];
     const formElements = myForm.getElementsByTagName('input');
     for (i=0; i<formElements.length; i++){
-        inputsTypes.push(formElements[i].type);
         inputsNames.push(formElements[i].name);
-        inputsValues.push(formElements[i].value);
-        console.log(inputsTypes);
         console.log(inputsNames);
-        console.log(inputsValues);
     }
 }
 
@@ -26,7 +19,7 @@ const regexValidate = (value, regex, div) => {
 const isFirstNameValid = () => {
     //regexValidate(document.querySelector('[name="first"]').value,
     regexValidate(first.value,
-    /^\S{2,50}$/,
+    /^\S[a-z]{2,50}$/,
     //document.getElementById("first"));
     document.getElementById(first.name));
     firstNameValid = regexResult;
@@ -34,7 +27,7 @@ const isFirstNameValid = () => {
 
 const isLastNameValid = () => {
     regexValidate(last.value,
-    /^\S{2,50}$/,
+    /^\S[a-z]{2,50}$/,
     document.getElementById(last.name));
     lastNameValid = regexResult;
 }
