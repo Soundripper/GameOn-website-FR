@@ -32,7 +32,7 @@ function closeModal(){
   modalbg.style.display = "none";
   myForm.classList.remove("hide");
   if(formSubmitted){
-    document.getElementsByClassName("msgThanks")[0].remove();
+    document.querySelector(".msgThanks").remove();
     myForm.reset();
   }
 }
