@@ -1,10 +1,16 @@
 const arrayGen = () => {
     const inputsNames = [];
+    const inputsValues = [];
+    const inputsTypes = [];
     const formElements = myForm.getElementsByTagName('input');
     for (i=0; i<formElements.length; i++){
-        inputsNames.indexOf(formElements[i].name) === -1 ? inputsNames.push(formElements[i].name) : console.log("This item already exists");
-        //inputsNames.push(formElements[i].name);
+        //inputsNames.indexOf(formElements[i].name) === -1 ? inputsNames.push(formElements[i].name) : console.log("This item already exists");
+        inputsNames.push(formElements[i].name);
+        inputsValues.push(formElements[i].value);
+        inputsTypes.push(formElements[i].type);
         console.log(inputsNames);
+        console.log(inputsValues);
+        console.log(inputsTypes);
     }
 }
 
