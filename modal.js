@@ -47,7 +47,7 @@ myForm.addEventListener('submit', function(e){
 });
 
 function validate(){
-  arrayGen();
+  //arrayGen();
   isFirstNameValid(),isLastNameValid(),isMailValid(),isBirthdateValid(),isQuantityValid(),isLocationValid(),isConditionsValid();
   if (firstNameValid && lastNameValid && mailValid && birthdateValid && quantityValid && locationValid && conditionsValid){
     messageSubmit();
