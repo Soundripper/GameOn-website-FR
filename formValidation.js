@@ -1,161 +1,79 @@
-const arrayGen = () => {
-    const inputsNames = [];
-    const inputsValues = [];
-    const inputsTypes = [];
-    const formElements = myForm.getElementsByTagName('input');
-    for (i=0; i<formElements.length; i++){
-        //inputsNames.indexOf(formElements[i].name) === -1 ? inputsNames.push(formElements[i].name) : console.log("This item already exists");
-        inputsNames.push(formElements[i].name);
-        inputsValues.push(formElements[i].value);
-        inputsTypes.push(formElements[i].type);
-        console.log (inputsNames);
-        console.log (inputsValues);
-        console.log (inputsTypes);
-        console.log (formElements);
-    }
-}
-
-const regexValidate = (value, type, regex, div) => {
-    if(type==="text"){
-        regexResult = regex.test(value);
-        if (!regexResult){
+const validate = () =>{
+    let errorsCounter = 0;
+    const fields = [
+        {
+            name: 'first',
+            type: 'text',
+            regex: /^\S[a-z]{2,50}$/,
+            div: document.getElementById("first")
+        },
+        {
+            name: 'last',
+            type: 'text',
+            regex: /^\S[a-z]{2,50}$/,
+            div: document.getElementById("last")
+        },
+        {
+            name: 'email',
+            type: 'text',
+            regex: /^\S+@\S+\.\S+$/,
+            div: document.getElementById("email")
+        },
+        {
+            name: 'birthdate',
+            type: 'text',
+            regex: /(\d{4})-(\d{2})-(\d{2})/,
+            div: document.getElementById("birthdate")
+        },
+        {
+            name: 'quantity',
+            type: 'text',
+            regex: /^[0-9][0-9]?$|^99$/,
+            div: document.getElementById("quantity")
+        },
+        {
+            name: 'location',
+            type: 'radio',
+            div: document.getElementById("locationCheckboxes")
+        },
+        {
+            name: 'checkbox1',
+            type: 'radio',
+            div: document.getElementById("conditions")
+        }
+    ]
+    
+    const hideError = (div, value) => {
+        if(value === "block"){
             div.nextElementSibling.style.display = 'block';
+            errorsCounter += 1;
+            console.log(errorsCounter);
         }else{
             div.nextElementSibling.style.display = 'none';
         }
     }
-    else if(type="radio"){
-        if (!regex){
-            div.nextElementSibling.style.display = 'block';
-        }else{
-            div.nextElementSibling.style.display = 'none';
+    
+    fields.forEach(field => {
+        switch (field.type) {
+            case 'text' :
+                valueDoc = document.querySelector(`input[name$="${field.name}"]`);
+                regexResult = field.regex.test(valueDoc.value);
+                console.log(regexResult);
+                if (regexResult){
+                    hideError(field.div, 'none');
+                }else{hideError(field.div, 'block');}
+                break;
+            case 'radio' :
+                checked = document.querySelectorAll(`[name="${field.name}"]:checked`);
+                console.log(checked);
+                if(checked.length > 0){
+                    hideError(field.div, 'none')
+                }else{hideError(field.div, 'block')}
+                break;
         }
-        console.log (value, type, regex, div);
+    });
+    
+    if(errorsCounter == 0){
+        messageSubmit();
     }
 }
-
-const isFirstNameValid = () => {
-    regexValidate(first.value,
-    first.type,
-    /^\S[a-z]{2,50}$/,
-    document.getElementById(first.name));
-    firstNameValid = regexResult;
-}
-
-const isLocationValid = () => {
-    const locationChecked = document.querySelectorAll('input[name="location"]:checked');
-    if(locationChecked.length > 0){
-        locationValid = true;
-    }else{locationValid = false;}
-    regexValidate(
-        location.value,
-        location.type,
-        locationValid,
-        document.getElementById("locationCheckboxes"));
-}
-
-// const isLastNameValid = () => {
-//     //regexValidate(document.querySelector('[name="last"]').value,
-//     regexValidate(last.value,
-//     /^\S[a-z]{2,50}$/,
-//     //document.getElementById("last"));
-//     document.getElementById(last.name));
-//     lastNameValid = regexResult;
-// }
-
-// const isMailValid = () => {
-//     regexValidate(document.querySelector('[name="email"]').value,
-//     /^\S+@\S+\.\S+$/,
-//     document.getElementById("email"));
-//     mailValid = regexResult;
-// }
-
-// const isBirthdateValid = () => {
-//     regexValidate(document.querySelector('[name="birthdate"]').value,
-//     /(\d{4})-(\d{2})-(\d{2})/,
-//     document.getElementById("birthdate"));
-//     birthdateValid = regexResult;
-// }
-
-// const isQuantityValid = () => {
-//     regexValidate(document.querySelector('[name="quantity"]').value,
-//     /^[0-9][0-9]?$|^99$/,
-//     document.getElementById("quantity"));
-//     quantityValid = regexResult;
-// }
-
-
-  
-// const isConditionsValid = () => {
-//     const conditions = document.getElementById("conditions");
-//     const conditionsChecked = document.querySelectorAll('input[name="checkbox1"]:checked');
-//     if(conditionsChecked.length > 0){
-//         conditions.nextElementSibling.style.display = 'none';
-//         conditionsValid = true;
-//     }else{
-//         conditions.nextElementSibling.style.display = 'block';
-//         conditionsValid = false;
-//     }
-// }
-
-///////OLD METHOD/////////////////////////////////////////////////////////////////////////////
-/*const isFirstNameValid = () => {
-    const firstValue = document.querySelector('[name="first"]').value;
-    const Regex = /^\S{2,50}$/.test(firstValue);
-    if(!Regex){
-        first.nextElementSibling.style.display = 'block';
-        FirstNameValid = false;
-    }else{
-        first.nextElementSibling.style.display = 'none';
-        FirstNameValid = true;
-    }
-}
-  
-const isLastNameValid = () => {
-    const lastValue = document.querySelector('[name="last"]').value;
-    const Regex = /^\S{2,50}$/.test(lastValue);
-    if(!Regex){
-        last.nextElementSibling.style.display = 'block';
-        LastNameValid = false;
-    }else{
-        last.nextElementSibling.style.display = 'none';
-        LastNameValid = true;
-    }
-}
-  
-const isMailValid = () => {
-    const emailValue = document.querySelector('[name="email"]').value;
-    const Regex = /^\S+@\S+\.\S+$/.test(emailValue);
-    if(!Regex){
-        email.nextElementSibling.style.display = 'block';
-        MailValid = false;
-    }else{
-        email.nextElementSibling.style.display = 'none';
-        MailValid = true;
-    }
-}
-  
-const isBirthdateValid = () => {
-    const birthValue = document.querySelector('[name="birthdate"]').value;
-    const Regex = /(\d{4})-(\d{2})-(\d{2})/.test(birthValue);
-    if(!Regex){
-        birth.nextElementSibling.style.display = 'block';
-        BirthdateValid = false;
-    }
-    else{
-        birth.nextElementSibling.style.display = 'none'; 
-        BirthdateValid = true;
-    }
-}
-  
-const isQuantityValid = () => {
-    const quantityValue = document.querySelector('[name="quantity"]').value;
-    const Regex = /^[0-9][0-9]?$|^99$/.test(quantityValue);
-    if(!Regex){
-        quantity.nextElementSibling.style.display = 'block';
-        QuantityValid = false;
-    }else{
-        quantity.nextElementSibling.style.display = 'none';
-        QuantityValid = true;
-    }
-}*/
