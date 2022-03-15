@@ -86,6 +86,7 @@
 //////////// OLD METHOD ////////////////////////////////////////////////////////////////////
 
 const isFirstNameValid = () => {
+    let firstNameValid;
     const firstValue = document.querySelector('[name="first"]').value;
     const Regex = /^\S{2,50}$/.test(firstValue);
     if(!Regex){
@@ -95,9 +96,11 @@ const isFirstNameValid = () => {
         first.nextElementSibling.style.display = 'none';
         firstNameValid = true;
     }
+    return firstNameValid;
 }
   
 const isLastNameValid = () => {
+    let lastNameValid;
     const lastValue = document.querySelector('[name="last"]').value;
     const Regex = /^\S{2,50}$/.test(lastValue);
     if(!Regex){
@@ -107,6 +110,7 @@ const isLastNameValid = () => {
         last.nextElementSibling.style.display = 'none';
         lastNameValid = true;
     }
+    return lastNameValid;
 }
   
 const isMailValid = () => {
