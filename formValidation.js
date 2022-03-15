@@ -8,6 +8,10 @@ const arrayGen = () => {
         inputsNames.push(formElements[i].name);
         inputsValues.push(formElements[i].value);
         inputsTypes.push(formElements[i].type);
+        console.log (inputsNames);
+        console.log (inputsValues);
+        console.log (inputsTypes);
+        console.log (formElements);
     }
 }
 
