@@ -90,10 +90,10 @@ const isFirstNameValid = () => {
     const Regex = /^\S{2,50}$/.test(firstValue);
     if(!Regex){
         first.nextElementSibling.style.display = 'block';
-        FirstNameValid = false;
+        firstNameValid = false;
     }else{
         first.nextElementSibling.style.display = 'none';
-        FirstNameValid = true;
+        firstNameValid = true;
     }
 }
   
@@ -102,10 +102,10 @@ const isLastNameValid = () => {
     const Regex = /^\S{2,50}$/.test(lastValue);
     if(!Regex){
         last.nextElementSibling.style.display = 'block';
-        LastNameValid = false;
+        lastNameValid = false;
     }else{
         last.nextElementSibling.style.display = 'none';
-        LastNameValid = true;
+        lastNameValid = true;
     }
 }
   
@@ -114,10 +114,10 @@ const isMailValid = () => {
     const Regex = /^\S+@\S+\.\S+$/.test(emailValue);
     if(!Regex){
         email.nextElementSibling.style.display = 'block';
-        MailValid = false;
+        mailValid = false;
     }else{
         email.nextElementSibling.style.display = 'none';
-        MailValid = true;
+        mailValid = true;
     }
 }
   
@@ -125,12 +125,12 @@ const isBirthdateValid = () => {
     const birthValue = document.querySelector('[name="birthdate"]').value;
     const Regex = /(\d{4})-(\d{2})-(\d{2})/.test(birthValue);
     if(!Regex){
-        birth.nextElementSibling.style.display = 'block';
-        BirthdateValid = false;
+        birthdate.nextElementSibling.style.display = 'block';
+        birthdateValid = false;
     }
     else{
-        birth.nextElementSibling.style.display = 'none'; 
-        BirthdateValid = true;
+        birthdate.nextElementSibling.style.display = 'none'; 
+        birthdateValid = true;
     }
 }
   
@@ -139,10 +139,10 @@ const isQuantityValid = () => {
     const Regex = /^[0-9][0-9]?$|^99$/.test(quantityValue);
     if(!Regex){
         quantity.nextElementSibling.style.display = 'block';
-        QuantityValid = false;
+        quantityValid = false;
     }else{
         quantity.nextElementSibling.style.display = 'none';
-        QuantityValid = true;
+        quantityValid = true;
     }
 }
 
