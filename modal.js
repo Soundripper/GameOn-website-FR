@@ -27,12 +27,12 @@ function launchModal() {
 //close modal event
 closeBtn.addEventListener('click', closeModal);
 
-//close modal form, reset and msgThanks
+//close modal form, reset and remove "msgThanks"
 function closeModal(){
   modalbg.style.display = "none";
   myForm.classList.remove("hide");
   if(formSubmitted){
-    document.getElementsByClassName("msgThanks")[0].remove();
+    document.querySelector(".msgThanks").remove();
     myForm.reset();
   }
 }
@@ -40,20 +40,11 @@ function closeModal(){
 //Bool form Submitted -- pour gérer le reset du form et du message
 let formSubmitted = false;
 
-// FONCTION DE VALIDATION DU FORM
+// SUbmit du form
 myForm.addEventListener('submit', function(e){
   e.preventDefault();
   validate();
 });
-
-// function validate(){  
-//   //arrayGen();
-//   //isFirstNameValid() , isLastNameValid() , isMailValid() , isBirthdateValid() , isQuantityValid() , isLocationValid() , isConditionsValid();
-//   // isFirstNameValid() , isLocationValid();
-//   // if (isFirstNameValid() && isLocationValid()){
-//   //   messageSubmit();
-//   // }
-// }
 
 // Modal message on submit
 function messageSubmit(){

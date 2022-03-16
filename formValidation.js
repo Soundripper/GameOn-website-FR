@@ -1,3 +1,4 @@
+/////////// Objets du form
 const validate = () =>{
     let errorsCounter = 0;
     const fields = [
@@ -42,7 +43,8 @@ const validate = () =>{
             div: document.getElementById("conditions")
         }
     ]
-    
+  
+    //////// Function Affichage message d'erreur
     const hideError = (div, value) => {
         if(value === "block"){
             div.nextElementSibling.style.display = 'block';
@@ -53,11 +55,12 @@ const validate = () =>{
         }
     }
     
+    ///////// Fields forEach -> switch field type -> tests
     fields.forEach(field => {
         switch (field.type) {
             case 'text' :
-                valueDoc = document.querySelector(`input[name$="${field.name}"]`);
-                regexResult = field.regex.test(valueDoc.value);
+                inputTxt = document.querySelector(`input[name$="${field.name}"]`);
+                regexResult = field.regex.test(inputTxt.value);
                 console.log(regexResult);
                 if (regexResult){
                     hideError(field.div, 'none');
