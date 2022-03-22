@@ -44,8 +44,8 @@ const validate = () =>{
         }
     ]
   
-    //////// Function Affichage message d'erreur
-    const hideError = (div, value) => {
+    //////// Function toggle message d'erreur
+    const toggleError = (div, value) => {
         if(value === "block"){
             div.nextElementSibling.style.display = 'block';
             errorsCounter += 1;
@@ -63,15 +63,15 @@ const validate = () =>{
                 regexResult = field.regex.test(inputTxt.value);
                 console.log(regexResult);
                 if (regexResult){
-                    hideError(field.div, 'none');
-                }else{hideError(field.div, 'block');}
+                    toggleError(field.div, 'none');
+                }else{toggleError(field.div, 'block');}
                 break;
             case 'radio' :
                 checked = document.querySelectorAll(`[name="${field.name}"]:checked`);
                 console.log(checked);
                 if(checked.length > 0){
-                    hideError(field.div, 'none')
-                }else{hideError(field.div, 'block')}
+                    toggleError(field.div, 'none')
+                }else{toggleError(field.div, 'block')}
                 break;
         }
     });
