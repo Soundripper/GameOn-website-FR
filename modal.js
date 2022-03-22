@@ -48,7 +48,7 @@ myForm.addEventListener('submit', function(e){
 
 // Modal message on submit
 function messageSubmit(){
-  const modalB = document.getElementsByClassName("modal-body")[0];
+  const modalB = document.querySelector(".modal-body");
   const msgDiv = document.createElement("div");
   msgDiv.classList.add("msgThanks");
   msgDiv.innerHTML = '<p>Merci pour votre inscription !</p>';
