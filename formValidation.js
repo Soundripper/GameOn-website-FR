@@ -5,13 +5,13 @@ const validate = () =>{
         {
             name: 'first',
             type: 'text',
-            regex: /^\S[a-z]{2,50}$/,
+            regex: /[a-zA-Z]{2,}/,
             div: document.getElementById("first")
         },
         {
             name: 'last',
             type: 'text',
-            regex: /^\S[a-z]{2,50}$/,
+            regex: /[a-zA-Z]{2,}/,
             div: document.getElementById("last")
         },
         {
